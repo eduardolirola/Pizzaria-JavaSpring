@@ -10,34 +10,34 @@ import java.util.Set;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("api/pizzaria")
+@RequestMapping("api/pizzas")
 public class PizzaController {
 
     @Autowired
-    private PizzaService pizzaservice;
+    private PizzaService pizzaService;
 
     @PostMapping
-    public ResponseEntity criar(RequestBody Pizza pizza) {
-        Pizza pizzaCriado = this.pizzaservice.criar(pizza);
+    public ResponseEntity criar(Pizza pizza) {
+        Pizza pizzaCriado = this.pizzaService.criar(pizza);
         return new ResponseEntity(
                 pizzaCriado
                         .toString(),
                 HttpStatus.CREATED);
     }
 
-    GetMapping
-    public Set<Pizza> listar() { return this.pizzaservice.listar();}
+    @GetMapping
+    public Set<Pizza> listar() { return this.pizzaService.listar();}
 
     @GetMapping ("/findby")
     public Pizza obter(@RequestParam("id")UUID id) {
-        return this.pizzaservice.obter(id);
+        return this.pizzaService.obter(id);
     }
 
     @PutMapping
     public ResponseEntity editar(
             @RequestParam("id")UUID id,
             @RequestBody Pizza pizza) {
-        this.pizzaservice.editar((id, pizza);
+        this.pizzaService.editar(id, pizza);
         return new ResponseEntity("Editado com sucesso",HttpStatus.OK);
 
     }

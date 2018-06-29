@@ -10,6 +10,8 @@ public interface PizzaService {
 
     Pizza obter(UUID id);
 
+    void remover(UUID id);
+
     void editar (UUID id, Pizza pizza);
 
 
